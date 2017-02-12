@@ -1,4 +1,19 @@
 <h1>
   {{title}}
+
 </h1>
+
+<ul>
+  <!-- We can set the css to parent html tag like this -->
+  <!--<li [routerLinkActive]="'active'">-->
+
+  <li>
+    <a [routerLink]="['/home']" [routerLinkActive]="'active'" [routerLinkActiveOptions]="{exact:true}">Home</a>
+  </li>
+  <li>
+    <a [routerLink]="['/page2']" [routerLinkActive]="'active'" [routerLinkActiveOptions]="{exact:true}">Page2</a>
+  </li>
+</ul>
+
+<hr>
 <router-outlet></router-outlet>
