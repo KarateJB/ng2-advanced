@@ -1,21 +1,16 @@
 import { NgModule } from '@angular/core';
-import { Routes, RouterModule } from '@angular/router';
-import { LayoutComponent } from './layout/layout.component';
-import { Page2Component } from './page2/page2.component';
-import { fallbackRoute } from './shared/fallback-route'
+import { Route, Routes, RouterModule } from '@angular/router';
 
+import { DashboardComponent } from './dashboard/dashboard.component';
+import { CardsComponent } from './cards/cards.component';
+
+import { fallbackRoute } from './shared/fallback-route';
 
 const routes: Routes = [
-  {path: '', redirectTo: 'home', pathMatch: 'full'},
-  {path: 'home',component: LayoutComponent},
-  {path: 'page2',component: Page2Component},
+  { path: 'dashboard', component: DashboardComponent },
+  { path: 'cards',     component: CardsComponent },
   fallbackRoute
-
-  //The uri which not match any will be math this one, only apply this when go live on production.
-  //{path: '**', redirectTo: 'home', pathMatch: 'full'}
-];
-
-@NgModule({
+];@NgModule({
   imports: [RouterModule.forRoot(routes, {enableTracing:true})],
   exports: [RouterModule],
   providers: []
