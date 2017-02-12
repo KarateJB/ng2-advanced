@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute, Router } from '@angular/router'
 
 @Component({
   selector: 'app-cards',
@@ -6,10 +7,23 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./cards.component.css']
 })
 export class CardsComponent implements OnInit {
+  private type: string;
+  constructor(
+    private router: Router,
+    private route: ActivatedRoute
+  ) {
 
-  constructor() { }
-
-  ngOnInit() {
   }
 
+  ngOnInit() {
+    //this.type = this.route.snapshot.params['type']; //Not observable
+    this.route.params.subscribe(params => {
+      this.type = params['type'];
+    });
+  }
+
+  private changeType(type: string) {
+    this.router.navigate(["cards", type]);
+
+  }
 }

@@ -12,7 +12,7 @@ import { fallbackRoute } from './shared/fallback-route';
 
 const routes: Routes = [
   { path: 'dashboard', component: DashboardComponent },
-  { path: 'cards',     component: CardsComponent },
+  { path: 'cards/:type',     component: CardsComponent },
   { path: 'charts',
     children: [
       { path: 'flot',     component: FlotComponent },

@@ -32,7 +32,7 @@
                   <div class="col-sm-6 col-xs-12">
                     <div class="card">
                       <div class="card-heading bg-primary">
-                        <div class="card-title">Paracosm</div>
+                        <div class="card-title">Paracosm : {{type}}</div>
                       </div>
                       <div class="card-offset">
                         <div class="card-offset-item text-right">
@@ -43,8 +43,8 @@
                         <p class="mb-sm">Cras rutrum scelerisque auctor. Donec ultricies blandit venenatis. Nulla facilisi. Praesent diam diam, venenatis lorem par.</p>
                       </div>
                       <div class="card-footer">
-                        <button type="button" class="btn btn-flat btn-default">Action 1</button>
-                        <button type="button" class="btn btn-flat btn-default">Action 2</button>
+                        <button type="button" class="btn btn-flat btn-default" (click)="changeType(100)">Action 1</button>
+                        <button type="button" class="btn btn-flat btn-default" (click)="changeType(200)">Action 2</button>
                       </div>
                     </div>
                   </div>

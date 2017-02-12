@@ -1,7 +1,4 @@
-<<<<<<< HEAD
-import { NgModule } from '@angular/core';
 import { Route } from '@angular/router';
-
 
 export const fallbackRoute: Route = {
   path: '**',
