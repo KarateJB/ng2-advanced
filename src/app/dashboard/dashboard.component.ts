@@ -16,7 +16,7 @@ export class DashboardComponent implements OnInit {
   }
 
   private gotoCards(type){
-    this.router.navigate(["cards", type]);
+    this.router.navigate(['cards', type]);
   }
 
 }
