@@ -8,6 +8,7 @@ import { ActivatedRoute, Router } from '@angular/router'
 })
 export class CardsComponent implements OnInit {
   private type: string;
+  private name: string;
   constructor(
     private router: Router,
     private route: ActivatedRoute
@@ -19,6 +20,17 @@ export class CardsComponent implements OnInit {
     //this.type = this.route.snapshot.params['type']; //Not observable
     this.route.params.subscribe(params => {
       this.type = params['type'];
+      if(params['name']){
+        console.log(params['name']);
+        this.name = params['name'];
+      }
+    });
+
+    this.route.queryParams.subscribe(params => {
+      if(params['name']){
+        console.log(params['name']);
+        this.name = params['name'];
+      }
     });
   }
 
