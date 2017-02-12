@@ -3,7 +3,7 @@ import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
 import { AppRoutingModule } from './app-routing.module';
-import { ChartsModule } from './charts/charts.module';
+// import { ChartsModule } from './charts/charts.module'; //Remoe this for Lazy load
 
 import { AppComponent } from './app.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
@@ -20,7 +20,7 @@ import { CardsComponent } from './cards/cards.component';
     BrowserModule,
     FormsModule,
     HttpModule,
-    ChartsModule,
+    //ChartsModule, //Remoe this for Lazy load
     AppRoutingModule //AppRoutingModule must be last imported
   ],
   providers: [],
