@@ -742,6 +742,8 @@
     }
 
 })(window);
+
+// 將以下方法移植到 /src/app/shared/app-init.ts 檔案中
 (function() {
     'use strict';
 

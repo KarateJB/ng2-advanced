@@ -17,22 +17,22 @@
                           </ul>
                         </div>
                         <!-- END dropdown-->
-                        <div class="card-title">Route Parameter : {{type}}</div>
+                        <div class="card-title">TYPE {{type}}</div>
                       </div>
                       <div class="card-body">
                         <p>Nulla egestas faucibus tincidunt.</p>
                         <p class="m0"><a href="#"><img src="assets/img/pic1.jpg" alt="Pic" class="mr-sm thumb48"></a><a href="#"><img src="assets/img/pic2.jpg" alt="Pic" class="mr-sm thumb48"></a><a href="#"><img src="assets/img/pic3.jpg" alt="Pic" class="mr-sm thumb48"></a><a href="#"><img src="assets/img/pic4.jpg" alt="Pic" class="mr-sm thumb48"></a></p>
                       </div>
                       <div class="card-footer">
-                        <button type="button" class="btn btn-flat btn-default" (click)="changeType(100)">Action 1</button>
-                        <button type="button" class="btn btn-flat btn-default" (click)="changeType(200)">Action 2</button>
+                        <button type="button" class="btn btn-flat btn-default" (click)="goCards(1000)">TYPE 1000</button>
+                        <button type="button" class="btn btn-flat btn-default" (click)="goCards(2000)">TYPE 2000</button>
                       </div>
                     </div>
                   </div>
                   <div class="col-sm-6 col-xs-12">
                     <div class="card">
                       <div class="card-heading bg-primary">
-                        <div class="card-title">Matrix/QueryString : {{name}}</div>
+                        <div class="card-title">Paracosm</div>
                       </div>
                       <div class="card-offset">
                         <div class="card-offset-item text-right">
@@ -43,8 +43,11 @@
                         <p class="mb-sm">Cras rutrum scelerisque auctor. Donec ultricies blandit venenatis. Nulla facilisi. Praesent diam diam, venenatis lorem par.</p>
                       </div>
                       <div class="card-footer">
-                        <button type="button" class="btn btn-flat btn-default" [routerLink]="['/cards', 100, {name:'Matrix'}]">Matrix</button>
-                        <button type="button" class="btn btn-flat btn-default" [routerLink]="['/cards', 200]" [queryParams]="{name:'Query string'}">Query string</button>
+                        <button [routerLink]="['/cards', 100, { name: 'Matrix' }]"
+                            type="button" class="btn btn-flat btn-default">Matrix</button>
+                        <button [routerLink]="['/cards', 100]"
+                                [queryParams]="{ name: 'QueryString1' }"
+                            type="button" class="btn btn-flat btn-default">QueryString 1</button>
                       </div>
                     </div>
                   </div>

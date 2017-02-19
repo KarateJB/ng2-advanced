@@ -1,5 +1,8 @@
-import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
+import {NgZone, Component,  OnInit} from '@angular/core';
+
+import { ActivatedRoute, Router } from '@angular/router';
+
+import { initDashboard } from '../shared/app-init';
 
 @Component({
   selector: 'app-dashboard',
@@ -8,15 +11,21 @@ import { Router } from '@angular/router';
 })
 export class DashboardComponent implements OnInit {
 
-  constructor(
-    private router: Router
-  ) { }
+  constructor(private router: Router, private route: ActivatedRoute,
+              private zone: NgZone) { }
 
   ngOnInit() {
+    this.zone.runOutsideAngular(() => {
+      initDashboard();
+    });
   }
 
-  private gotoCards(type){
-    this.router.navigate(["cards", type]);
+  debug() {
+    console.log('Dashboard', 'debug()');
+  }
+
+  goCards(type) {
+    this.router.navigateByUrl('/cards/' + type);
   }
 
 }

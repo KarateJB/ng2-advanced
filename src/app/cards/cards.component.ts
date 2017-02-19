@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute, Router } from '@angular/router'
+
+import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
   selector: 'app-cards',
@@ -7,35 +8,42 @@ import { ActivatedRoute, Router } from '@angular/router'
   styleUrls: ['./cards.component.css']
 })
 export class CardsComponent implements OnInit {
-  private type: string;
-  private name: string;
-  constructor(
-    private router: Router,
-    private route: ActivatedRoute
-  ) {
 
-  }
+  type: string;
+
+  constructor(private router: Router, private route: ActivatedRoute) { }
 
   ngOnInit() {
-    //this.type = this.route.snapshot.params['type']; //Not observable
-    this.route.params.subscribe(params => {
+    this.route.params.subscribe( params => {
       this.type = params['type'];
-      if(params['name']){
-        console.log(params['name']);
-        this.name = params['name'];
-      }
+      console.log('Matrix: ' + params['name']);
     });
 
-    this.route.queryParams.subscribe(params => {
-      if(params['name']){
-        console.log(params['name']);
-        this.name = params['name'];
+    this.route.queryParams.subscribe( params => {
+      console.log('QueryString: ' + params['name']);
+    });
+  }
+
+  goCards(type) {
+    // this.router.navigateByUrl('/cards/' + type);
+
+    // this.router.navigate(['/cards', type]);
+    this.router.navigate(['..', type], { relativeTo: this.route });
+  }
+
+  // 13 練習兩種不同的可選參數用法 (Optional Parameters)
+  goQueryString() {
+    this.router.navigate(['/cards', 100], {
+      queryParams: {
+        name: 'QueryString1'
       }
     });
   }
 
-  private changeType(type: string) {
-    this.router.navigate(["cards", type]);
-
+  goMatrix() {
+    this.router.navigate(['/cards', 100, {
+        name: 'Matrix',
+      }]);
   }
+
 }
