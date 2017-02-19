@@ -8,20 +8,21 @@
       <div class="card-body">
         <form method="get" action="/" class="form-horizontal"
                           [formGroup]="form" novalidate  >
+
           <!-- Form controls  -->
-          <fieldset>
-            <div class="form-group" [ngClass]="{'has-error': getFieldInvalid('name')}">
+          <!--<input type="text" formControlName="title" >-->
+
+          <fieldset formGroupName="name">
+            <div class="form-group" [ngClass]="{'has-error': getFieldInvalid('firstName')}">
               <label class="col-sm-2 control-label">Rounded Corners</label>
               <div class="col-sm-10">
-                <input type="text" class="form-control rounded" required formControlName="name">
+                <input type="text" class="form-control rounded" required formControlName="firstName">
               </div>
             </div>
-          </fieldset>
-          <fieldset >
             <div class="form-group">
               <label class="col-sm-2 control-label">With help</label>
               <div class="col-sm-10">
-                <input type="text" class="form-control"><span class="help-block">A block of help text that breaks onto a new line and may extend beyond one line.</span>
+              <input type="text" class="form-control rounded" required formControlName="lastName">
               </div>
             </div>
           </fieldset>

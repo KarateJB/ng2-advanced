@@ -12,12 +12,19 @@ export class ReactiveFormComponent implements OnInit {
 
   constructor(private fb: FormBuilder) {
     this.form = this.fb.group({
-      'name': ['JB', Validators.required]
+      title: 'This is title',
+      'name': this.fb.group({
+        firstName: ['JB', Validators.required],
+        lastName: 'Lin'
+      })
     });
   }
 
   getFieldInvalid(fieldName) {
-    return this.form.controls[fieldName].invalid;
+    // return this.form.controls[fieldName].invalid;
+    let nameGroup: FormGroup  = <FormGroup>this.form.controls["name"];
+    return nameGroup.controls[fieldName].invalid;
+
   }
 
   ngOnInit() {
