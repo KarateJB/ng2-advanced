@@ -1,4 +1,5 @@
 import { FormComponent } from './form/form.component';
+import { ReactiveFormComponent } from './reactiveform/reactiveform.component';
 import { NgModule } from '@angular/core';
 import { PreloadAllModules, Route,  Routes,  RouterModule} from '@angular/router';
 
@@ -9,6 +10,7 @@ import { fallbackRoute } from './shared/fallback-route';
 
 const routes: Routes = [
   { path: 'form',   component: FormComponent },
+  { path: 'reactiveform',   component: ReactiveFormComponent },
   { path: 'dashboard',   component: DashboardComponent },
   { path: 'cards/:type', component: CardsComponent },
   { path: 'charts/:username',
