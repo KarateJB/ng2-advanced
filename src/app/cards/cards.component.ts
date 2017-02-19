@@ -2,6 +2,7 @@ import { SkyComponent } from './../sky/sky.component';
 import {ViewChild, ViewChildren, Component,  OnInit, QueryList} from '@angular/core';
 
 import { ActivatedRoute, Router } from '@angular/router';
+import { ApplyCounterDirective } from '../apply-counter.directive'
 
 @Component({
   selector: 'app-cards',
