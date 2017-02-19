@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { FormGroup, FormArray, FormBuilder, Validators } from '@angular/forms';
+import { FormGroup, FormArray, FormBuilder, Validators, AbstractControl } from '@angular/forms';
+import { validator  } from '../shared/validator';
+// import { Observable } from 'ngrx\observe';
 
 @Component({
   selector: 'app-form',
@@ -22,6 +24,7 @@ export class ReactiveFormComponent implements OnInit {
     });
 
 
+
     this.dynamicForm = this.fb.group({
       title: 'This is title',
       'name': this.fb.array([
@@ -30,19 +33,32 @@ export class ReactiveFormComponent implements OnInit {
         this.fb.control('JB3', Validators.required)
       ])
     });
+
+    //Bind form model from data model
+    let data = {
+      'title': 'This is title',
+      'name': ['JB1', 'JB2', 'JB3']
+    };
+    // let fgs = data.map(x => this.fb.group(x));
+
+
   }
 
-  getFieldInvalid(fieldName) {
+  private getFieldInvalid(fieldName) {
     // return this.form.controls[fieldName].invalid;
     let nameGroup: FormGroup = <FormGroup>this.form.controls["name"];
     return nameGroup.controls[fieldName].invalid;
 
   }
 
-  ngOnInit() {
+  private getDynamicFieldInvalid(fieldName, prefix=""){
+    console.log(prefix+fieldName);
+    return this.dynamicForm.get(prefix+fieldName).invalid;
+  }
 
+  ngOnInit() {
     let groupAry: FormArray = <FormArray>this.dynamicForm.controls["name"];
-    groupAry.insert(groupAry.length, this.fb.control('JB4'));
+    groupAry.insert(groupAry.length, this.fb.control('JB4', validator));
 
   }
 
