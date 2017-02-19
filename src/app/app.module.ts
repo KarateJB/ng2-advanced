@@ -8,7 +8,8 @@ import { AppComponent } from './app.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { CardsComponent } from './cards/cards.component';
 import { FormComponent } from './form/form.component';
-import { ReactiveFormComponent } from './reactiveform/reactiveform.component';
+import { ReactiveformComponent } from './reactiveform/reactiveform.component';
+import { SkyComponent } from './sky/sky.component';
 
 @NgModule({
   declarations: [
@@ -16,7 +17,8 @@ import { ReactiveFormComponent } from './reactiveform/reactiveform.component';
     DashboardComponent,
     CardsComponent,
     FormComponent,
-    ReactiveFormComponent
+    ReactiveformComponent,
+    SkyComponent
   ],
   imports: [
     BrowserModule,

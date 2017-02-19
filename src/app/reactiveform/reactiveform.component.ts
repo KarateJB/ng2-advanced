@@ -1,68 +1,50 @@
 import { Component, OnInit } from '@angular/core';
-import { FormGroup, FormArray, FormBuilder, Validators, AbstractControl } from '@angular/forms';
-import { validator  } from '../shared/validator';
-import { Observable } from 'rxjs';
+
+import {AbstractControl, FormArray,  Validators,   FormGroup,    FormBuilder} from '@angular/forms';
+
+import { NoWillValidator } from '../shared/no-will-validator';
 
 @Component({
-  selector: 'app-form',
+  selector: 'app-reactiveform',
   templateUrl: './reactiveform.component.html',
   styleUrls: ['./reactiveform.component.css']
 })
-export class ReactiveFormComponent implements OnInit {
+export class ReactiveformComponent implements OnInit {
 
-  private form: FormGroup;
-  private dynamicForm: FormGroup;
+  form: FormGroup;
 
   constructor(private fb: FormBuilder) {
-
     this.form = this.fb.group({
-      title: 'This is title',
-      'name': this.fb.group({
-        firstName: ['JB', Validators.required],
-        lastName: 'Lin'
-      })
-    });
-
-
-
-    this.dynamicForm = this.fb.group({
-      title: 'This is title',
-      'name': this.fb.array([
-        this.fb.control('JB1', Validators.required),
-        this.fb.control('JB2', Validators.required),
-        this.fb.control('JB3', Validators.required)
+      'name': ['Will', [Validators.required, Validators.minLength(3)]],
+      'group1': this.fb.array([
+        this.fb.control('Will1', Validators.required),
+        this.fb.control('Will2', Validators.required),
+        this.fb.control('Will3', Validators.required),
+        this.fb.control('Will4', Validators.required)
       ])
     });
-
-    //Bind form model from data model
-    let data = [{
-      'title': 'This is title',
-      'name': ['JB1', 'JB2', 'JB3']
-    }];
-
-
-    // let fgs = data.map(x => this.fb.group(x));
-    // this.dynamicForm.setValue(fgs);
-
-
   }
 
-  private getFieldInvalid(fieldName) {
-    // return this.form.controls[fieldName].invalid;
-    let nameGroup: FormGroup = <FormGroup>this.form.controls["name"];
-    return nameGroup.controls[fieldName].invalid;
-
-  }
-
-  private getDynamicFieldInvalid(fieldName, prefix=""){
-    console.log(prefix+fieldName);
-    return this.dynamicForm.get(prefix+fieldName).invalid;
+  getFieldInvalid(fieldName, prefix="") {
+    return this.form.get(prefix+fieldName).invalid;
   }
 
   ngOnInit() {
-    let groupAry: FormArray = <FormArray>this.dynamicForm.controls["name"];
-    groupAry.insert(groupAry.length, this.fb.control('JB4', validator));
+    this.form.addControl('email', this.fb.control('default@example.com'));
 
+    let group1: FormArray = <FormArray>this.form.controls['group1'];
+    group1.insert(group1.length, this.fb.control('Will 5',
+      [NoWillValidator, Validators.minLength(2)]));
   }
 
+  // NoWillValidator(c: AbstractControl) {
+  //   if(c.value == 'Will') {
+  //     return {
+  //       NoWill: true
+  //     };
+  //   }
+  //   else {
+  //     return null;
+  //   }
+  // }
 }

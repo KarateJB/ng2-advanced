@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { SkyComponent } from './../sky/sky.component';
+import {ViewChild, Component,  OnInit} from '@angular/core';
 
 import { ActivatedRoute, Router } from '@angular/router';
 
@@ -8,6 +9,9 @@ import { ActivatedRoute, Router } from '@angular/router';
   styleUrls: ['./cards.component.css']
 })
 export class CardsComponent implements OnInit {
+
+  @ViewChild(SkyComponent)
+  sky: SkyComponent;
 
   type: string;
 
@@ -22,6 +26,14 @@ export class CardsComponent implements OnInit {
     this.route.queryParams.subscribe( params => {
       console.log('QueryString: ' + params['name']);
     });
+  }
+
+  ngAfterViewInit() {
+    console.log(this.sky.name);
+  }
+
+  checkSkyInputDirty() {
+    console.log(this.sky.input.dirty);
   }
 
   goCards(type) {

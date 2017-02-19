@@ -1,32 +1,26 @@
 <section>
   <div class="container-fluid">
     <h5 class="mt0">Classic form controls and custom variants</h5>
+    <pre>{{ f.value | json }}</pre>
+    <pre>{{ f.valid | json }}</pre>
     <div class="card">
       <div class="card-body">
-        <form method="get" action="/" class="form-horizontal" #f="ngForm" novalidate (ngSubmit)="onSubmit(f)" >
-
-          <!-- Show ngForm's elements  -->
-          <pre>{{f.value | json }}</pre>
-
-          <!-- Show ngForm's errors will be null  -->
-          <pre>{{f.errors | json }}</pre>
-
-          <!-- Show ngForm's element's attribute  -->
-          <pre>{{ (f.controls['name'])?.invalid }}</pre>
-
-          <!-- Form controls  -->
+        <form method="get" action="/" class="form-horizontal" #f="ngForm" novalidate>
           <fieldset>
             <div class="form-group" [ngClass]="{'has-error': name.invalid && name.dirty}">
               <label class="col-sm-2 control-label">Rounded Corners</label>
               <div class="col-sm-10">
-                <input type="text" class="form-control rounded" name="name" required ngModel #name="ngModel">
-                <pre>errors : {{ name.errors | json }}</pre>
-                <pre>touched : {{name.touched}}</pre>
-                <pre>untouched : {{name.untouched}}</pre>
-                <pre>dirty : {{name.untouched}}</pre>
-                <pre>valid : {{name.valid}}</pre>
-                <pre>invalid : {{name.invalid}}</pre>
-                <pre>value : {{name.value}}</pre>
+                <input type="text" class="form-control rounded" name="name"
+                       required minlength="3"
+                       [(ngModel)]="data.name" #name="ngModel">
+                <button type="submit">送出</button>
+                <pre>errors: {{ name.errors | json }}</pre>
+                <pre>touched: {{ name.touched }}</pre>
+                <pre>untouched: {{ name.untouched }}</pre>
+                <pre>dirty: {{ name.dirty }}</pre>
+                <pre>pristine: {{ name.pristine }}</pre>
+                <pre>valid: {{ name.valid }}</pre>
+                <pre>invalid: {{ name.invalid }}</pre>
               </div>
             </div>
           </fieldset>
@@ -34,16 +28,13 @@
             <div class="form-group">
               <label class="col-sm-2 control-label">With help</label>
               <div class="col-sm-10">
-                <input type="text" name="name1" ngModel #name1="ngModel" class="form-control"><span class="help-block">A block of help text that breaks onto a new line and may extend beyond one line.</span>
+                <input [(ngModel)]="data.group1.sub1" name="sub1" #sub1 type="text" class="form-control"><span class="help-block">A block of help text that breaks onto a new line and may extend beyond one line.</span>
               </div>
             </div>
-          <!--</fieldset>
-          <fieldset>-->
             <div class="form-group">
               <label for="input-id-1" class="col-sm-2 control-label">Label focus</label>
               <div class="col-sm-10">
-                <input id="input-id-1" name="name2" ngModel #name2="ngModel" [required]="!!name1.value"  type="text" class="form-control">
-                <pre>{{name2.errors | json}}</pre>
+                <input [(ngModel)]="data.group1.sub2" name="sub2" [required]="!!sub1.value" id="input-id-1" type="text" class="form-control">
               </div>
             </div>
           </fieldset>

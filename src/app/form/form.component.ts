@@ -7,9 +7,21 @@ import { Component, OnInit } from '@angular/core';
 })
 export class FormComponent implements OnInit {
 
+  data: any = {
+    "name": "123",
+    "group1": {
+      "sub1": "1",
+      "sub2": "123"
+    }
+  };
+
   constructor() { }
 
   ngOnInit() {
+  }
+
+  debug(obj) {
+    console.dir(obj);
   }
 
 }
