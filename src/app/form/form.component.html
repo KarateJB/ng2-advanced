@@ -1,12 +1,14 @@
 <section>
   <div class="container-fluid">
     <h5 class="mt0">Classic form controls and custom variants</h5>
-    <p class="mb-lg">
-      {{f.value}}
-    </p>
     <div class="card">
       <div class="card-body">
-        <form method="get" action="/" class="form-horizontal" #f="ngForm">
+        <form method="get" action="/" class="form-horizontal" #f="ngForm" novalidate (ngSubmit)="onSubmit(f)" >
+
+          <!-- Show ngForm's element's attribute  -->
+          <pre>{{ (f.controls['name'])?.invalid }}</pre>
+
+          <!-- Form controls  -->
           <fieldset>
             <div class="form-group" [ngClass]="{'has-error': name.invalid && name.dirty}">
               <label class="col-sm-2 control-label">Rounded Corners</label>
