@@ -10,10 +10,9 @@ import { ActivatedRoute, Router } from '@angular/router';
 })
 export class CardsComponent implements OnInit {
 
-  @ViewChild(SkyComponent)
-  sky: SkyComponent;
+  @ViewChild(SkyComponent) sky: SkyComponent;
 
-  type: string;
+  private type: string;
 
   constructor(private router: Router, private route: ActivatedRoute) { }
 
