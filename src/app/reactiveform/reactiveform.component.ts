@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormArray, FormBuilder, Validators, AbstractControl } from '@angular/forms';
 import { validator  } from '../shared/validator';
-// import { Observable } from 'ngrx\observe';
+import { Observable } from 'rxjs';
 
 @Component({
   selector: 'app-form',
@@ -35,11 +35,14 @@ export class ReactiveFormComponent implements OnInit {
     });
 
     //Bind form model from data model
-    let data = {
+    let data = [{
       'title': 'This is title',
       'name': ['JB1', 'JB2', 'JB3']
-    };
+    }];
+
+
     // let fgs = data.map(x => this.fb.group(x));
+    // this.dynamicForm.setValue(fgs);
 
 
   }
