@@ -24,7 +24,7 @@ export class ReactiveFormComponent implements OnInit {
     });
 
 
-
+    //Bind form model with FormBuilder
     this.dynamicForm = this.fb.group({
       title: 'This is title',
       'name': this.fb.array([
@@ -35,14 +35,11 @@ export class ReactiveFormComponent implements OnInit {
     });
 
     //Bind form model from data model
-    let data = [{
+    let data = {
       'title': 'This is title',
       'name': ['JB1', 'JB2', 'JB3']
-    }];
-
-
-    // let fgs = data.map(x => this.fb.group(x));
-    // this.dynamicForm.setValue(fgs);
+    };
+    this.dynamicForm.setValue(data);
 
 
   }
